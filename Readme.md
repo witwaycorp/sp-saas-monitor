@@ -304,3 +304,10 @@ Contributions welcome! Please submit PRs for:
 - Additional SaaS domain patterns
 - Improved detection algorithms
 - Bug fixes and performance improvements
+
+# Restore current working version
+## Creates a new branch starting from the tag (safest method)
+git checkout -b restore-v1.0.0 v1.0.0
+
+## OR, if you just want to view the code without making changes
+git checkout v1.0.0
