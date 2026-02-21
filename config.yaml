@@ -1,0 +1,99 @@
+saas_apps:
+  # Salesforce - Primary target for MCP agent detection
+  # Note: Salesforce uses AWS and other cloud providers, so we monitor their main domains
+  - name: "Salesforce"
+    domains:
+      - "salesforce.com"
+      - "force.com"
+      - "login.salesforce.com"
+      - "test.salesforce.com"
+      - "sfdcstatic.com"
+      - "krxd.net"
+      - "tableau.com"
+      - "heroku.com"
+      - "herokuapp.com"
+      - "einstein.ai"
+      - "salesforceliveagent.com"
+      - "contentforce.com"
+      - "datorama.com"
+    ip_ranges:
+      # Salesforce owned IP ranges
+      - "13.110.0.0/15"
+      - "13.111.0.0/16"
+      - "136.146.0.0/16"
+      - "161.71.0.0/16"
+      - "160.8.0.0/16"
+      - "204.14.232.0/21"
+      - "204.14.234.0/24"
+      - "204.14.235.0/24"
+      - "204.14.236.0/24"
+      - "204.14.237.0/24"
+      # AWS ranges (Salesforce uses AWS) - common regions
+      - "52.0.0.0/11"
+      - "54.0.0.0/9"
+      - "54.144.0.0/12"
+      - "54.160.0.0/12"
+      - "54.192.0.0/12"
+      - "54.224.0.0/12"
+
+  # Zoom - Video conferencing
+  - name: "Zoom"
+    domains:
+      - "zoom.us"
+      - "zoomgov.com"
+      - "zoomweb.net"
+      - "zoom.com"
+      - "zoomcloudmeetings.com"
+    ip_ranges:
+      - "3.7.0.0/16"
+      - "3.128.0.0/12"
+      - "52.11.0.0/16"
+      - "52.12.0.0/15"
+      - "52.14.0.0/15"
+      - "52.32.0.0/11"
+      - "52.64.0.0/12"
+      - "52.80.0.0/15"
+      - "52.82.0.0/15"
+      - "52.84.0.0/15"
+      - "52.88.0.0/13"
+      - "52.200.0.0/13"
+      - "52.220.0.0/15"
+
+  # Workday - HR platform
+  # Workday uses AWS, Azure, and their own data centers
+  - name: "Workday"
+    domains:
+      - "workday.com"
+      - "myworkday.com"
+      - "myworkdayjobs.com"
+      - "workdayaws.com"
+      - "workday.com.au"
+      - "myworkday.ca"
+      - "myworkday.co.uk"
+    ip_ranges:
+      # Workday primary IP ranges (AS18465)
+      - "209.177.160.0/19"
+      - "74.119.128.0/18"
+      - "64.125.0.0/16"
+      - "66.248.160.0/19"
+      - "216.153.64.0/18"
+      # AWS ranges (Workday uses AWS)
+      - "13.248.0.0/16"
+      - "76.76.0.0/16"
+      - "130.214.0.0/16"
+      # Azure ranges (Workday uses Azure too)
+      - "40.112.0.0/12"
+      - "40.76.0.0/14"
+
+monitoring:
+  interface: null  # null means all interfaces
+  capture_dns: true
+  capture_tls_sni: true
+  process_cache_seconds: 60
+  poll_interval_seconds: 1  # Poll every 1 second for faster detection
+  enable_reverse_dns: true
+
+logging:
+  log_file: "C:\\ProgramData\\SaaSMonitor\\logs\\monitor.log"
+  log_level: "info"
+  alert_on_detection: true

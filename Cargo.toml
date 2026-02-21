@@ -1,0 +1,52 @@
+[package]
+name = "sp-saas-monitor"
+version = "0.1.0"
+edition = "2021"
+
+[features]
+default = []
+wfp = []           # Windows Filtering Platform support (future)
+
+[dependencies]
+chrono = "0.4"
+log = "0.4"
+env_logger = "0.10"
+log4rs = "1.2"
+windows-service = "0.6"
+
+# For Windows API access
+windows = { version = "0.52", features = [
+    "Win32_Foundation",
+    "Win32_NetworkManagement_IpHelper",
+    "Win32_System_Diagnostics_ToolHelp",
+    "Win32_System_Threading",
+    "Win32_System_ProcessStatus",
+    "Win32_Networking_WinSock",
+    "Win32_Security",
+    "Win32_System_IO",
+    "Win32_System_LibraryLoader",
+    "Win32_System_Ioctl",
+    "Win32_System_Memory",
+    "Win32_System_SystemServices",
+    "Win32_System_WindowsProgramming",
+    "Win32_UI_Shell",
+    "Win32_UI_WindowsAndMessaging",
+    "Win32_NetworkManagement_WindowsFilteringPlatform",
+] }
+
+# Async runtime for handling connections
+tokio = { version = "1", features = ["full"] }
+futures = "0.3"
+
+# For DNS and IP handling
+trust-dns-proto = "0.23"
+trust-dns-resolver = "0.23"
+ipnetwork = "0.20"
+
+# Configuration
+serde = { version = "1.0", features = ["derive"] }
+serde_yaml = "0.9"
+config = "0.13"
+
+# For getting process command line
+ntapi = "0.4"
